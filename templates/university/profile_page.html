@@ -1,0 +1,169 @@
+{% extends 'lms/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}{{Profile.user}}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+
+{% block body %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} alert alert-success" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-7">
+        <div class="card" style="background-color: rgba(249, 249, 249, 0.8);">
+            <div class="row">
+                <div class="col-sm-12 col-md-5 col-lg-7">
+                    <div class="card-body">
+                        <div class="user-image">
+                            <img src="{{user_profile.profile_pic.url}}" alt="{{current_user}} profile picture"
+                                class='img-thumbnail rounded-circle' style="display: inline-block;
+                                width: 90px;
+                                height: 90px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                background-position: center center;
+                                background-size: cover;" />
+                        </div>
+
+                        <h2>{{user_profile.user.username}}'s profile</h2><br>
+
+                        {% if request.user.profile.bio == None %}
+
+                        {% else %}
+                        <span style="font-weight:800">Bio :</span>{{user_profile.bio}}<br><br><br>
+
+                        {% endif %}
+
+                        <span style="font-weight: 800;">user name:</span> {{user_profile.user.username}}<br>
+
+                        <span style="font-weight:800">email :</span>{{user_profile.user.email}}<br>
+
+                        {% if request.user.profile.is_teacher != True %}
+                        {% if request.user.profile.matric == None %} <small style="color:red;">you didnt fill in a
+                            matric number contact the administrator as soon as possible else you will be disabled from
+                            this platform </small>
+                        {% else %}
+                        <span style="font-weight:800">matric :</span>{{user_profile.matric}}<br>
+                        <span style="font-weight:800">Level :</span> {{user_profile.level}}<br>
+                        {% endif %}
+                        {% endif %}
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="container-fluid">
+                {% if request.user.profile.is_teacher %}
+                <h3 style="color: black;">Created courses</h3><br>
+                {% if teachers_courses is not None %}
+                {% for mycourse in teachers_courses %}
+
+                <a href="{{mycourse.get_absolute_url}}">{{mycourse.title}}-{{mycourse.code}}</a><br>
+
+                {% endfor %}
+                {% elif teachers_courses is not None and teachers_courses is not ''  %}
+                you have not created any course {{request.user}}
+                {% endif %}
+
+
+                {% elif request.user.profile.is_teacher != True %}
+
+
+                <h3>courses registered for</h3>
+                {% if user_courses is not None %}
+                <p>you are currently enrolled in</p>
+                {% for course in user_courses %}
+
+                <a href="{% url 'lms:course_detail' course.slug %}">{{course.title}}- {{course.code}}</a>
+
+                <br> <br>
+                {% endfor%}
+
+                {% else %}
+                you have no courses yet please browse the list of courses available and register</div> <br> <br> <br>
+            {% endif %}
+
+
+            <br>
+            {% endif %}<br>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12 col-md-5">
+    <div class="card" style="background-color: rgba(249, 249, 249, 0.8);">
+        <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-7">
+                <div class="container-fluid">
+                    <h1 style="padding: 20px 0px 20px 20px;">edit your profile</h1>
+                    <form action="." method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ u_form|crispy }}
+                        {{ p_form|crispy }}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-dark" style="margin-bottom: 0px ;">
+    <div class="navbar-header">
+        <!-- Brand -->
+        <a class="navbar-brand" href="{% url "lms:course_list" %}">
+            <h3 class="h1style">LASU-ECE</h3>
+        </a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+            aria-controls="navbarsupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link iden" href="{% url 'QA:daily_question' %}">
+                        <h5 class="navitemstyle">ECE Online</h5>
+                    </a>
+                </li>
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url "QA:ask" %}">
+                        <h5 class="navitemstyle">ASK QUESTION</h5>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link iden" href="{% url "QA:NoAnswer" %}">help ?</a>
+                </li>
+            </ul>
+        </div>
+</nav><br><br>

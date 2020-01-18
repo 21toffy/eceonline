@@ -1,0 +1,17 @@
+{% extends "QA/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+  {% include 'QA/common/display_question.html' %}<br>
+  {% if preview %}
+<div class="container">
+    <div class="card question-preview" >
+      <div class="card-header iden">YOUR ANSWER? </div>
+      <div class="card-body" >
+        {{ preview|crispy }}
+      </div >
+    </div >
+</div>
+  {% endif %}
+  {% include 'QA/common/post_answer.html' with answer_form=form %}
+{% endblock %}

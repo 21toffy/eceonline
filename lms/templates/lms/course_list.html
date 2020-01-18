@@ -1,0 +1,120 @@
+{% extends 'lms/base.html' %}
+
+{% block title %}course list{% endblock %}
+{% block albums_active %}active{% endblock %}
+style=" margin-top :10px; margin-bottom:10px ;"
+{% block body %}
+
+
+<section style=" background-color: #209cee; margin-top :10px; margin-bottom:10px ;">
+    <div>
+      <div class="container">
+        <h2 style=" padding-top :30px; margin-bottom:10px ; color: aliceblue;">
+          ECE Online
+        </h2>
+        <p class="subtitle is-5" style=" padding-top :20px; padding-bottom:20px ; text-align: center; color: aliceblue;">
+         The us of technology to enhance greatness
+          <br/>Be a part of our world class community tODAY!!
+        </p>
+      </div>
+    </div>
+  </section>
+ 
+ 
+ 
+ 
+ 
+  <div class="row">
+      {% for course in object_list %}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card">
+          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+
+        <div class="card-body">
+          <div class="card-title">
+              <a href="{% url 'lms:course_detail' course.slug %}"><p class="title is-4">course title: {{course.title}}</p></a>
+              <div class="content">
+                <p>
+                  {{course.overview}}
+                </p>
+                <span>course code : {{course.code}}<br>Lecturer Incharge :
+                   {{ course.owner |capfirst }}</span>
+              </div>
+              {% if request.user == course.owner %}<br>
+              <span> <a href="{% url "lms:course_delete" course.pk %}" class="btn text-danger">Delete</a></span>
+              <span> <a href="{% url "lms:course_edit" course.pk %}" class="btn text-dark">edit course</a></span>
+              {% endif %}
+            <h4 class="card-text">
+               
+            </h4>
+
+          </div>
+        </div>
+      </div><br>
+    </div>
+    {% endfor %}
+  </div>
+
+ 
+ 
+ 
+ 
+ 
+ 
+  <br><br>
+ 
+ 
+    {% if is_paginated %}
+    <nav aria-label="Page navigation conatiner"></nav>
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+  
+      {% endif %}
+    </ul>
+    </nav>
+  </div>
+  {% endif %}
+ 
+
+{% endblock %}
+
+
+
+
+
+   
+{% for course in object_list %}
+<div class="card" >
+    <div class="card-header" ></div >
+    <div class="card-body" >
+        <a href="{% url 'lms:course_detail' course.slug %}"><p class="title is-4">course title: {{course.title}}</p></a>
+        <span>course code : {{course.code}}<br>Lecturer Incharge :
+          {{ course.owner |capfirst }}</span>
+        {% if request.user == course.owner %}
+        <span> <a href="{% url "lms:course_delete" course.pk %}" class="btn text-danger">Delete</a></span>
+        <span> <a href="{% url "lms:course_edit" course.pk %}" class="btn text-dark">edit course</a></span>
+        {% endif %}
+    </div >
+</div >
+{% endfor %}
+ 
+  
+  
+  {% if is_paginated %}
+      <nav aria-label="Page navigation conatiner"></nav>
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+    
+        {% endif %}
+      </ul>
+      </nav>
+    </div>
+    {% endif %}

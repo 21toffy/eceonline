@@ -1,0 +1,1 @@
+dafault_app_config = 'user.UserConfig'

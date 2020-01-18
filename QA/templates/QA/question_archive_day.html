@@ -1,0 +1,38 @@
+{% extends "QA/base.html" %}
+{% block title %} Questions on {{ day }} {% endblock %}
+
+{% block body %}
+  <div class="col-sm-12" >
+    <div class="container servicinglayout">
+      <h2> All Questions of {{ day }}</h2 >
+    </div><br><br>
+
+
+    <ul>
+      {% for question in object_list %}
+        <li>
+          {{ question.votes }}
+          <a href="{{ question.get_absolute_url }}" >
+            {{ question }} </a> asked by {{ question.user }}
+          on {{ question.created }}
+        </li ><br>
+      {% empty %}
+        <li>NO QUESTION HAS BEEN POSTED YET</li>
+      {% endfor %}
+    </ul >
+
+    <div>
+      {% if previous_day %}
+        <a href="{% url "QA:daily_questions" year=previous_day.year month=previous_day.month day=previous_day.day %}" >
+           << Previous Day &nbsp;&nbsp;&nbsp;
+        </a >
+      {% endif %}
+      {% if next_day %}
+        <a href="{% url "QA:daily_questions" year=next_day.year month=next_day.month day=next_day.day %}" >
+          Next Day >>
+        </a >
+      {% endif %}
+    </div >
+  </div ><br><br>
+{% endblock %}
+

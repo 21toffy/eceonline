@@ -1,0 +1,17 @@
+{% extends 'QA/base.html' %}
+
+{% block body %}
+<h5 style="font-weight: 500; color:red;">These questions need urgent answers !, Thank you.</h5>
+{% for question in nakedquestions %}</h3><br>
+<div class="container-fluid">
+<div class="card" >
+    <div class="card-body" >
+        
+        <h5><span style="color: gold; font-weight:bolder; font-family: helvetica;">{{question.user}}</span> <span style="color: green;"> asked: </span>
+            <a href="{{question.get_absolute_url }}">{{question}}</a></h5><br> <span style="color: green; font-family:'Courier New', Courier, monospace; font-weight: bold;">on</span> {{question.created}}
+    </div >
+</div >
+</div>
+{% endfor %}
+<br><br><br>
+{% endblock %}

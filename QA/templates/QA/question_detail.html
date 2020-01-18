@@ -1,0 +1,15 @@
+{% extends 'QA/base.html' %}
+
+
+{% block title %}{{ question.title }} - {{ block.super }}{% endblock %}
+
+{% block body %}
+  {% include "QA/common/display_question.html" %}
+  {% include "QA/common/list_answers.html" %}
+  {% if user.is_authenticated %}
+    {% include "QA/common/post_answer.html" %}
+  {% else %}
+    <a href="{% url "user:login" %}"><span style="font-weight: 700; color:orangered; ">Login to post answers</span></a>
+  {% endif %}
+  <br><br>
+{% endblock %}

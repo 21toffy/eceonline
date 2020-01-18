@@ -1,0 +1,115 @@
+{% extends 'lms/base.html' %}
+{% block title %}{{Course.title}}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid backgroundtext">
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="card">
+                <div class="card-body">                       
+                        <div>
+                        <h3 class="detail">course title: <span style="color: navy;">{{object.title}}</span></h3><br>
+                        </div>
+                        <div class="meta font-weight-bold" style="color:rgb(0,185,0);">
+                                <h3>COURSE CODE: <span style="color:gold;">{{object.code}}</span></h3><br>
+                        </div >
+                        
+                        <h5>started : {{object.created}}</h5><br>
+                        <h5>lecturer in charge : {{object.owner}}</h5><br>
+                        <div class="container-fluid">
+                        <h3 style="color:olivedrab;">course overview :</h3>
+                        {{object.overview}}
+
+                        </div><br>
+                        {% if request.user.is_teacher %}
+                            <p>helloo</p>
+                        {% endif %}
+                        {% if request.user.profile.is_teacher != True %}
+
+                                {% if request.user in course.student.all %}
+                                <a href="{% url 'unenroll_button' course.slug %}" class="btn btn-info">UN-Enroll now</a>
+                                {% else %}
+                                <a href="{% url 'enroll_button' course.slug %}" class="btn btn-info">Enroll now</a>
+                                {% endif %}
+
+                        {% endif %}
+                        
+                        
+                        {% for student in course.student.all %}
+                        
+                            <p>{{course.student.username}}</p>
+                        {% endfor %}
+
+                        {% if request.user.profile.is_teacher %}
+                        <h3>{{course.student.all.count}} student is/are currently enrolled for this course</h3>
+                        {% endif %}
+                </div>    
+                </div>
+            
+            </div> 
+                
+         
+
+        {% comment %}<!-- {% if if request.user==Course.owner and request.user.is_teacher %} -->{% endcomment %}
+        <div class="col-sm-12 col-md-5">
+                <div class="card ">
+        
+                    <div class="card-header" >course title: {{course.title}}</div >    
+                
+                        {% for mod in object.mymodules %}
+                    
+                            <div class="card-body">
+                                <ul> 
+
+                                    <li><a href="{% url 'lms:module_detail' object.slug mod.slug %}">module {{mod.position}}: &nbsp;{{mod.title}}</a></li>   
+                                   
+                                </ul>
+                                <a href="{% url 'lms:module_to_delete' mod.id %}">delete module</a>
+                                <a href="{% url 'lms:module_to_update' mod.id %}">edit module</a><br>
+
+
+                                
+                                <!-- <a href="{{ mod.get_update_url }}">edit module</a>
+                                <a href="{{ mod.get_delete_url }}">delete module</a> -->
+
+        
+                            </div>
+                        
+                            
+                        {% endfor %}
+                          {% if request.user == course.owner %}
+                          <a href="{% url "lms:new_course_module" course.pk %}" class="btn btn-secondary">add module</a>&nbsp;
+                          {% endif %}
+        
+        
+                    </div>
+                        
+                </div>
+    
+    </div>    
+  
+</div>
+
+
+                    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+</div><br>
+<div class="card w-80 mb-3 ">
+    <div class="card-body">
+        <h2 class="card-title mb-5"><a class="text-capitalize" href="#">{{event.title}}</a> <span class="ml-5 badge badge-info">{{event.comments.count }} comments</span> </h2>
+    </div>
+    </div>

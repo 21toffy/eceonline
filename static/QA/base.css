@@ -1,0 +1,61 @@
+.nav.navbar {
+	margin:0px 0px 0px 0px;
+	color: crimson;
+	
+}
+.bodyly{
+	background-image: url(images/student.jpg) ;
+	
+	color: rgb(244,244,244);
+	
+	margin-bottom: 3px;
+	font-family: arial, Helvetica;
+	color: crimson;
+}
+
+body {
+	background: url("images/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.navitemstyle{
+    font-weight:bolder;
+     color: crimson;
+}
+
+.h1style{
+    color:RGB(128,128,225);
+    font-weight:bold;
+    }
+
+.iden{
+    font-weight:bold;
+    color:RGB(255,155,106);
+}
+
+h1:hover{
+    color:#66BFBF;
+}
+
+h5:hover{
+    color:RGB(255,155,106);
+    /*color:RGB(255,185,151);*/
+}
+h2{
+    color:red;
+    font-weight:bold;
+}
+.servicinglayout{
+	text-align: center;
+	padding: 5px;
+	margin-top: 100px;
+	font-weight: normal;
+	font-family: hevetica;
+	color: white;
+	border-bottom: 2px solid white;
+
+}
+iden1{
+    background:black;
+
+}

@@ -1,0 +1,88 @@
+<div class="container-fluid">
+      <div class=row>
+          <div class="panel panel-default">
+              <div class="panel-heading">Panel Heading</div>
+              <div class="panel-body">
+                  <h3>What is Viberr?</h3>
+                  <p>Viberr is an app that allows you to upload and store all of your music on the cloud.</p>
+                  <h3>How do I add music?</h3>
+                  <p>First, create a new album by filling out the form on this page. Once an album is created you will be able to add/upload songs.</p>
+                  <h3>What are some Album logo best practices?</h3>
+              </div>
+          </div>
+      </div>
+    </div>
+
+<div class="question" >
+  <div class="meta col-sm-12" >
+    <h1 >{{ question.title }}</h1 >
+    Asked by {{ question.user }} on {{ question.created }}
+  </div >
+  <div class="body col-sm-12" >
+    {{ question.question|markdownify }}
+  </div >
+</div >
+
+<div class="container-fuid">
+      <div class="row">
+          <div class="card col-bg-10 col-md-6 col-sm-5 bg-primary" style="mr:10px;" >
+              <div class="card-header" >header</div >
+              <div class="card-body" >
+
+              </div >
+          </div >
+      </div>
+</div>
+<div class="container-fuid">
+      <div class="row">
+          <div class="card">
+              <div class="card-body" >
+
+              </div >
+          </div >
+      </div>
+</div>
+
+
+
+
+<!--class noanswerList(RedirectView):-->
+<!--    def get_redirect_url(self, *args, **kwargs):-->
+<!--        questions = Question.objects.all()-->
+<!--        for noanswer in questions:-->
+<!--            # questions= None()-->
+<!--            if not noanswer.answer_set.all():-->
+<!--                print(noanswer)-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

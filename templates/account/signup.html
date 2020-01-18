@@ -1,0 +1,41 @@
+{% extends 'lms/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+
+{% block body %}
+{% if messages %}
+  <ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }} alert alert-success"{% endif %}>{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+      <div class="card" >
+        
+        <div class="card-body logintext" >
+          {% if error_message %}
+          <span class="errorlogintext">{{ error_message }}</span>
+          {% endif %}
+          <h1>{% trans "Sign Up" %}</h1>     
+          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="hidden"  name="{{ redirect_field_name }}" value="{% url 'user:edit_matric' %}" />
+            <button class='btn btn-primary' type="submit">{% trans "Sign Up" %} &raquo;</button>
+          </form><br>
+           <div class="card-footer">
+            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+          </div> 
+        </div >
+      </div >
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+{% endblock %}

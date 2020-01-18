@@ -1,0 +1,57 @@
+{% extends 'lms/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="containerfuid" style="background-color: rgba(0, 0, 0, 0.5); height: 200px; width: auto; color: rgb(3, 3, 3); text-align: center;   left: 0; right: 0; ">
+    <h1>whats up</h1>
+</div>
+<section>
+
+</section>
+
+
+
+<div class="container">
+  {% for courses in course %}
+  <div class="card text-black mb-3 ">
+    
+      
+    
+    <div class="card-body flexdirection:row; display:flex;">
+        <div class="col-sm-6">
+            <img class="" style="flex:1; display: fle; justify-content: flex-start; width: 200px; height: 200px;  " src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+        </div>
+      <h4 class="card-title"><a href="{% url 'lms:course_detail' courses.slug %}"><p class="title is-4">course title: {{courses.title}}</p></a></h4>
+      
+      <div class="content">
+        <p>
+          {{courses.overview}}
+        </p>
+        <span style="font-weight:800;">course code :</span> {{courses.code}}<br> <span style="font-weight:800;">Lecturer Incharge :</span>
+           {{ courses.owner |capfirst }}<br><br>
+           <div style="font-weight:800;">
+           {% if courses.student.count == 1 %} 
+            {{courses.student.count}} student is currently enrolled for this course
+           {% else %}
+           {{courses.student.count}} students are currently enrolled for this course
+           {% endif %}
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %} 
+  <a href="{% url "lms:course_list" %}" class="btn btn-info">Browse Course List</a><br>
+<br><br>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+ 
+
+

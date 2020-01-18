@@ -1,0 +1,41 @@
+{% extends 'lms/base.html' %}
+{% load markdownify %}
+
+{% load crispy_forms_tags %}
+{% block title %}profile edit{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container col-sm-12">
+
+         
+    <div class="card-header margin-auto" ><P STYLE="font-weight:bold; font-family:helvetica;">TITLE: {{ course.title }}</P ></div >
+  <div class="card-title">&nbsp;&nbsp;<span style="font-weight:bold;">Asked by </span><span style="font-weight:bold; color:gold;">{{ course.owner }}</span></div>
+
+    <div class="card-body" >
+      <div class="body col-sm-12" >
+        {{ course.course|markdownify }}
+      </div >
+    </div >
+
+
+</div>
+<br>
+<br>
+
+  <br>
+  <br>
+<div class="col-sm-12" >
+    <h3 style="color:RGB(45,165,31);">Post your answer</h3 >
+    <form method="post"
+          action="{% url "lms:module_created" pk=course.id %}" >
+            {{ module_form | crispy }}
+            {% csrf_token %}
+     
+      <button class="btn btn-primary" type="submit" name="action"
+              value="SAVE" >Answer
+      </button >
+    </form >
+  </div >
+    
+{% endblock %}

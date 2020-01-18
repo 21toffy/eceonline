@@ -1,0 +1,87 @@
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'class19/css/bootstrap.min.css'%}"/>
+    <link rel="stylesheet" href="{% static 'class19/css/font-awesome.min.css' %}"/>
+
+
+    <!-- <link rel="stylesheet" href="{% static 'finalyearproject/css/bootstrap.min.css'%}"/> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'finalyearproject/style.css' %}">
+  <!DOCTYPE html><html><head>  <meta charset="utf-8" />  
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+</head>
+<body>
+        
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light ">
+    <div class="container-fluid">    
+        <!-- Header -->
+        <div class="navbar-header">
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="navbarsupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>  
+            <a class="navbar-brand logo" href="{% url 'lms:course_list' %}" >
+                ECE Online
+            </a>        
+        </div>
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0" >
+                <li class="nav-item active" >
+                    <a class="nav-link"  href="{% url 'QA:daily_question' %}" >Q&A blog</a >
+                </li >
+                
+                <li class="nav-item" >
+                    <a class="nav-link iden" href="#" >about</a >
+                </li >
+                <li>
+                    <a class="nav-link iden" href="{% url 'lms:course_list' %}" >All Courses</a>
+                </li>
+                {% if user.is_authenticated %}
+                
+                <li class="nav-item" >
+                        <a class="nav-link iden" href="{% url 'user:profile' %}" >dashboard</a >
+                </li >
+                <li>
+                        <a href="{% url 'account_logout' %}" class="nav-link">  LOGOUT:{{request.user.username}} </a>
+                    </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'account_login' %}" class="nav-link">LOGIN : </a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link iden" href="{% url 'account_signup' %}">Register</a >
+                </li >
+                
+                {% endif %}
+            </ul >
+            </div >
+            
+        </div>
+    </nav> 
+    
+    <br><br>
+    <div class="container">
+        {% block body %}       
+        {% endblock %}
+    </div >
+    
+    
+
+    <script src="{% static 'finalyearproject/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'finalyearproject/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'finalyearproject/js/mixitup.min.js' %}"></script>
+	<script src="{% static 'finalyearproject/js/circle-progress.min.js' %}"></script>
+	<script src="{% static 'finalyearproject/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'finalyearproject/js/main.js' %}"></script>   
+    </body >
+</html >
+
+
+
+
+

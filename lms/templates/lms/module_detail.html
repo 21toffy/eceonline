@@ -1,0 +1,163 @@
+{% extends 'lms/base.html' %}
+{% block title %}{{module.title}}{% endblock %}
+{% block albums_active %}active{% endblock %}
+   
+{% block body %}
+<div class="row">
+      <div class="col-sm-12 col-md-7">
+            <div class="card">
+                  <div class="row">
+                        <div class="col-sm-12 col-md-5 col-lg-7">
+                              <div class="card-body">
+                                    <div class="user-image">
+                                          <h5 class="detail">module {{ module.position }}: <span
+                                                      style="color: navy;">{{module.title}}</span></h3><br>
+                                    </div>
+                                    <div class="meta font-weight-bold" style="color:rgb(0,185,0);">
+                                          <h5>COURSE CODE: <span style="color:gold;">{{module.course.code}}</span></h5>
+                                          <br>
+                                    </div>
+                                    
+                                   
+                              </div>
+                        </div>
+                  </div>
+                  <div class="container">
+                  </div>
+            </div>
+      </div>
+      <div class="col-sm-12 col-md-5">
+            <div class="card">
+                  <div class="row">
+                        <!-- <div class="col-sm-12 col-md-5 col-lg-7"> -->
+                              <div class="container-fluid">
+                                    {% if module is not None %}
+                                    {% if module.video_url is not None %}
+                                    <video controls controlsList="nodownload" poster="{{ module.thumbnail }}"
+                                          src="http://127.0.0.1:8000{{ module.video_url.url }}" width="300"
+                                          height="200">
+                                          Sorry, your browser doesn't support embedded videos.
+                                    </video><br><br>
+                                    <div class="container-fluid">
+                                          {{module.description}}
+                                    </div>
+                                    
+                                    {% else %}
+                                    <small style="color:red;">there are no videos for this chapter</small>
+                                    {% endif %}
+
+                                    {% if module.files is not None %}
+                                    <video controls controlsList="nodownload" poster="{{ module.thumbnail }}"
+                                    src="http://127.0.0.1:8000{{ module.files.url }}" width="300" height="200">
+                                    Sorry, your browser doesn't support embedded videos.
+                              </video><br><br>
+                              <div class="container-fluid">
+                                          <div class="meta font-weight-bold" style="color:rgb(0,185,0);">Notes</div>
+
+                                    {{module.description}}
+                              </div>
+                                    {% else %}
+
+                                    <small style="color:red;">there are no media files for this chapter</small>
+
+                                    {% endif %}
+                                    {% endif %}<br><br><br><b>
+                              </div>
+                              </form>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% if module is not None %}
+<h3><a href="{{ module.course.get_absolute_url }}">Course : {{ module.course.title }}</a><< go back to  </h3>
+
+{% endif %}
+slug
+description
+course
+video_url
+position
+
+---------------
+
+title
+
+thumbnail
+
+files
+
+
+<div class="row">
+      <div class="col-sm-12 col-md-7">
+        <div class="card" style="background-color: rgba(249, 249, 249, 0.8);">
+          <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-7">
+              <div class="card-body">
+                  <div class="container">
+                  <div class="">
+                        <h5 class="detail">module {{ module.position }}: <span style="color: navy;">{{module.title}}</span></h3><br>
+                  </div>
+                  <div class="meta font-weight-bold" style="color:rgb(0,185,0);">
+                        <h5>COURSE CODE: <span style="color:gold;">{{module.course.code}}</span></h5><br>
+                  </div>                  
+                  <div class="meta font-weight-bold" style="color:rgb(0,185,0);">Notes</div>
+                              <p><span style="color:black;">{{module.description}}</span></p><br>
+                        </div> 
+            </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-5">
+        <div class="card" style="background-color: rgba(249, 249, 249, 0.8);">
+          <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-7">
+              <div class="container-fluid">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

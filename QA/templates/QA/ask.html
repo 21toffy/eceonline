@@ -1,0 +1,36 @@
+{% extends "QA/base.html" %}
+
+{% load markdownify %}
+{% load crispy_forms_tags %}
+
+{% block title %} Ask a question {% endblock %}
+
+{% block body %}
+  <div class="col-md-8 " >
+    <h2 class="h1id">What is on Your mind?</h2 ><br>
+    {% if preview %}
+      <div class="card question-preview" >
+        <div class="card-header" >
+          <span class="iden"><h6 class="card-title" >{{ preview.title }}</h6></span>
+        </div >
+        <div class="card-body" >
+
+          {{ preview.question |  markdownify }}
+        </div >
+      </div >
+    {% endif %}
+
+    <form method="post" >
+      {{ form | crispy }}
+      {% csrf_token %}
+      <button class="btn btn-success" type="submit" name="action"
+              value="PREVIEW" >
+        Preview
+      </button >
+      <button class="btn btn-primary" type="submit" name="action"
+              value="SAVE" >
+        Ask!
+      </button >
+    </form >
+  </div >
+{% endblock %}

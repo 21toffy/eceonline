@@ -1,0 +1,26 @@
+{% extends "lms/base.html" %}
+{% load crispy_forms_tags %}
+    {% block title %}
+    {% if object %}
+          Edit course "{{ object.title }}"
+    {% else %}
+          Create  course
+    {% endif %}
+    {% endblock %}
+    {% block body %}
+    <h1>
+    {% if object %}
+          Edit course "{{ object.title }}"
+    {% else %}
+          Create a new course
+    {% endif %}
+    </h1>
+          <div class="module">
+            <h2>Course info</h2>
+            <form action="." method="post">
+                  {{ form | crispy }}
+                  {% csrf_token %}
+                  <p><input type="submit" name="action" value="Save course"></p>
+            </form>
+          </div>
+    {% endblock %} 

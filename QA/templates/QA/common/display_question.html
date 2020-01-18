@@ -1,0 +1,15 @@
+{% load markdownify %}
+<div class="container col-sm-12">
+
+         
+              <div class="card-header margin-auto" ><P STYLE="font-weight:bold; font-family:helvetica;">TITLE: {{ question.title }}</P ></div >
+            <div class="card-title">&nbsp;&nbsp;<span style="font-weight:bold;">Asked by </span><span style="font-weight:bold; color:gold;">{{ question.user }}</span> on {{ question.created }}</div>
+
+              <div class="card-body" >
+                <div class="body col-sm-12" >
+                  {{ question.question|markdownify }}
+                </div >
+              </div >
+        
+
+</div>
