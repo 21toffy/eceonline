@@ -69,6 +69,7 @@ def enroll(request, course_slug):
     print('you have been enrolled')
     return redirect('lms:course_detail',slug=course.slug)
 
+
 def un_enroll(request, course_slug):
     course = get_object_or_404 (Course, slug=course_slug)
     user = request.user
@@ -90,12 +91,7 @@ class CourseListView(ListView):
     paginate_by = 3
     qs = Course.objects.all()
 
-
-   
-
-
-
-        
+  
     
 
 

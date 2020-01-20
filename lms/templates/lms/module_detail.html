@@ -33,26 +33,28 @@
             <div class="card">
                   <div class="row">
                         <div class="container-fluid">
+                              
                               {% if module is not None %}
-                              {% if module.video_url is not None %}
-                              <video controls controlsList="nodownload" poster="{{ module.thumbnail }}"
-                                    src="http://127.0.0.1:8000{{ module.video_url.url }}" width="300" height="200">
-                                    Sorry, your browser doesn't support embedded videos.
-                              </video><br><br>
+                                    {% if module.video_url is not None %}
+                                    <video controls controlsList="nodownload" poster="{{ module.thumbnail }}"
+                                          src="http://127.0.0.1:8000{{ module.video_url.url }}" width="300" height="200">
+                                          Sorry, your browser doesn't support embedded videos.
+                                    </video><br><br>
+                                    
 
+                                    {% else %}
+                                    <small style="color:red;">there are no videos for this chapter</small>
+                                    {% endif %}
 
-                              {% else %}
-                              <small style="color:red;">there are no videos for this chapter</small>
-                              {% endif %}
+                                    {% if module.files is not None %}
 
-                              {% if module.files is not None %}
-                              {{module.files}}
+                                    {{module.files}}
 
-                              {% else %}
+                                    {% else %}
 
-                              <small style="color:red;">there are no media files for this chapter</small>
+                                    <small style="color:red;">there are no media files for this chapter</small>
 
-                              {% endif %}
+                                    {% endif %}
 
                               {% endif %}<br><br><br><b>
                         </div>

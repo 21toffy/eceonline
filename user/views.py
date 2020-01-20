@@ -39,7 +39,6 @@ from lms.models import Course, Module
 def Profile_Page(request):
     print(request.user.id)
     profile = get_object_or_404(Profile, id=request.user.id)
-
     context={'profile':profile, 'my_courses':my_courses, 'user':user}
     return render(request,'university/profile_page.html',context)
 
