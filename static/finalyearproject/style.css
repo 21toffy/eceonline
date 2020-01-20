@@ -1,11 +1,11 @@
 
 body{
-	background-image: url(images/backy.jpg) ;
+	background-image: url(https://i.ibb.co/vJVjdkg/20200120-121952-1.jpg) ;
 	color: #FDFFFC;
 	text-align: center;
 	color: black;
-	margin-top: 3px;
-	margin-bottom: 3px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	font-family: arial, Helvetica;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -28,13 +28,13 @@ body{
   padding: 6% 0%;
   color:black;
   }
-  
+
   .card-body{
 	margin: 0% 0% 0% 3%;
   padding: 6% 10%;
-  
+
   }
-  
+
 .other-card{
 
   background-color: rgba(249, 249, 249, 0.8);
@@ -49,7 +49,7 @@ body{
 
 
 .main{
-	
+
 background-image: white url("images/BG.jpg") no-repeat;
 height: 100%;
 background-position: center;
@@ -57,15 +57,15 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 .loginimage{
-background-image: white url("images/BG.jpg"); 
+background-image: white url("images/BG.jpg");
 
-object-fit: cover;        
+object-fit: cover;
 
 }
 
 .navbar{
 background-color: #dc3545;
-margin:0%;
+margin:0;
 }
 .logo{
 font-weight:900;
@@ -94,52 +94,52 @@ background-position: top center;
 	width: 100%;
 	background-color: #f7f7f7;
         } */
-        
+
 
 #messages {
 	padding: 10px;
 	height: 100%;
 	overflow-y: auto;
         }
-        
+
 #messages p {
 	margin: 5px 0;
 	padding: 0;
         }
-        
+
 .sidebar {
 	position: fixed;
 	right: 10px;
 	height: 100%;
 	background-color: white;
         }
-        
+
 .info {
 	margin: 5px 0;
 	font-style: italic;
         }
-        
+
 .message-container {
 	margin: 5px 0;
         }
-        
+
 .message-container .username {
 	display: inline-block;
 	margin-right: 5px;
 	font-weight: bold;
         }
-        
+
  .me,
  .username.me {
 	font-weight: bold;
 	color: blue;
         }
-        
+
 .message-container .username.me {
 	display: inline-block;
 	margin-right: 5px;
         }
-        
+
 #message-form {
 	padding: 10px;
 	background-color: #f7f7f7;
@@ -147,11 +147,11 @@ background-position: top center;
 	bottom: 0;
 	width: 50%;
         }
-        
+
 #message-input {
 	resize: none;
 		}
-		
+
 
 
 
@@ -162,7 +162,7 @@ background-position: top center;
 .card-two {
   border: none;
   color:black;
-  
+
 }
 .card-img-two {
   border-radius: 0;
@@ -181,42 +181,42 @@ background-position: top center;
 
     &:nth-child(even) .card-body {
       padding-left: 0;
-      padding-right: 1.25rem; 
+      padding-right: 1.25rem;
     }
-    
+
     @media (max-width: 576px) {
       display: block;
     }
-    
+
   }
 
   .card-img-body-two {
     flex: 1;
     overflow: hidden;
     position: relative;
-    
+
     @media (max-width: 576px) {
       width: 100%;
       height: 200px;
     	margin-bottom: 20px;
     }
-    
+
   }
-  
+
   .card-img-two {
     width: 100%;
     height: auto;
     position: absolute;
     margin-left: 50%;
     transform: translateX(-50%);
-    
+
     @media (max-width: 1140px) {
           margin: 0;
     transform: none;
     width: 100%;
     height: auto;
     }
-    
+
   }
 
   .card-body-two {
@@ -224,11 +224,11 @@ background-position: top center;
 	padding: 0 0 0 1.25rem;
   padding: 6% 0%;
   color:black;
-    
+
     @media (max-width: 576px) {
       padding: 0;
     }
-    
+
   }
   .card-title {
     padding-left: 10px;
@@ -276,6 +276,6 @@ background-position: top center;
 
 
 
-  
+
 
 
